@@ -18,7 +18,6 @@ def user_signup(request):
         form = SignupForm()
     return render(request, 'signup.html', {'form': form})
 
-
 # Login page
 def user_login(request):
     if request.method == 'POST':
@@ -44,3 +43,13 @@ def home(request):
     if user.is_authenticated:
         return render(request, 'home.html', {'user': user})
     return render(request, 'home.html')
+
+@login_required
+def upload(request):
+    user = request.user
+    return render(request, 'upload.html', {'user': user})
+
+@login_required
+def archives(request):
+    user = request.user
+    return render(request, 'archives.html', {'user': user})

@@ -1,5 +1,4 @@
-<h1 align="center">
-  <br>TripAdvance</h1>
+# TripAdvance
 
 Running the Server:
 

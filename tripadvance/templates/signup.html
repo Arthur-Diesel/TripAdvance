@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+        .text-center {
+            margin-top: 1rem;
+        }
+        .text-gray {
+            color: #807e7e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Sign Up</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Signup</button>
+            <div class="text-center">
+                <p>Already have an account? <a href="{% url 'login' %}" class="text-gray">Login here</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

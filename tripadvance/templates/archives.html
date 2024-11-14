@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archives</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <a class="navbar-brand" href="/">TripAdvance</a>
+        <div class="navbar-nav">
+            <a class="nav-link" aria-current="page" href="/upload">Upload</a>
+            <a class="nav-link active" href="#">Archives</a>
+            <a class="nav-link" href="/logout">Logout</a>
+        </div>
+    </nav>
+    <div class="container">
+        {% if success != None %}
+            <div class="alert alert-success mt-3" role="alert">
+                {{ success }}
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mt-5">Archives</h1>
+                <p class="text-center">Here are your uploaded files.</p>
+                <table class="table table-striped border border-black">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col">#</th>
+                            <th scope="col" class="col">File</th>
+                            <th scope="col" class="col">Uploaded at</th>
+                            <th scope="col" class="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for archive in archives %}
+                        <tr>
+                            <td class="align-middle col">{{ forloop.counter }}</td>
+                            <td class="align-middle col">{{ archive.filename }}</td>
+                            <td class="align-middle col">{{ archive.created_at }}</td>
+                            <td class="d-flex align-items-center col">
+                                <a href="/archive/{{ archive.id }}" class="btn btn-primary me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                                    </svg>
+                                </a>
+                                <form action="/archive/{{ archive.id }}" method="POST" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-x-fill" viewBox="0 0 16 16">
+                                            <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M6.854 7.146 8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 1 1 .708-.708"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

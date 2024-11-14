@@ -17,6 +17,16 @@
         </div>
     </nav>
     <div class="container">
+        {% if error != None %}
+            <div class="alert alert-danger mt-3" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        {% if success != None %}
+            <div class="alert alert-success mt-3" role="alert">
+                {{ success }}
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col-12">
                 <h1 class="text-center mt-5">Upload your trip data</h1>
@@ -24,7 +34,7 @@
                 <div class="border my-3 p-3">
                     <h5>File format</h5>
                     <p>It should be formatted in the following way:</p>
-                    <p>date;city;start_airport;end_airport;airline;duration;price</p>
+                    <p>date;start_city;end_city;airline;duration;price</p>
                 </div>
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}

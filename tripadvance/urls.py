@@ -26,4 +26,5 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),   
     path('upload/', views.upload, name='upload'),
     path('archives/', views.archives, name='archives'),
+    path('archive/<int:id>', views.archive, name='archive'),
 ]

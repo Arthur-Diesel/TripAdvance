@@ -27,4 +27,7 @@ urlpatterns = [
     path('upload/', views.upload, name='upload'),
     path('archives/', views.archives, name='archives'),
     path('archive/<int:id>', views.archive, name='archive'),
+    path('predict/', views.predict, name='predict'),
+    path('graphs/', views.graphs, name='graphs'),
+    path('train/', views.train, name='train'),
 ]

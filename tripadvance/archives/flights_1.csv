@@ -1,0 +1,43 @@
+date,start_city,end_city,airline,duration,price
+19/05/2025,Salvador,Bras�lia,Latam,115,91.33391304347825
+12/03/2025,Salvador,Aracaju,Gol,50,72.37739130434782
+19/05/2025,Salvador,Bras�lia,Gol,115,91.20173913043477
+22/05/2025,Salvador,Recife,Gol,80,82.68
+19/05/2025,Salvador,Bras�lia,Gol,115,91.20173913043477
+12/03/2025,Salvador,Aracaju,Latam,375,159.31652173913045
+22/05/2025,Salvador,Recife,Azul,75,88.20347826086957
+15/03/2025,Salvador,Recife,Gol,85,82.68
+19/05/2025,Salvador,Bras�lia,Gol,115,91.20173913043477
+12/03/2025,Salvador,Aracaju,Azul,55,90.46434782608695
+22/05/2025,Salvador,Recife,Gol,80,82.68
+19/05/2025,Salvador,Bras�lia,Latam,115,89.93565217391304
+12/03/2025,Salvador,Aracaju,Azul,5,90.46434782608695
+22/05/2025,Salvador,Recife,Azul,75,88.20347826086957
+15/03/2025,Salvador,Recife,Azul,75,80.50434782608696
+19/05/2025,Salvador,Bras�lia,Gol,115,91.20173913043477
+12/03/2025,Salvador,Aracaju,Azul,5,90.46434782608695
+15/03/2025,Salvador,Recife,Gol,85,82.68
+19/05/2025,Salvador,Bras�lia,Gol,115,91.20173913043477
+12/03/2025,Salvador,Aracaju,Gol,5,90.46434782608695
+22/05/2025,Salvador,Recife,Gol,80,82.68
+15/03/2025,Salvador,Recife,Azul,75,80.50434782608696
+18/12,Curitiba,Campinas,Azul,65,65.8695652173913
+25/03,Curitiba,Goiania,Azul,220,87.88
+06/12,Curitiba,Goiania,Latam,280,107.28521739130434
+01/03,Curitiba,Vitoria,Latam,625,78.06782608695652
+24/12,Curitiba,Vitoria,Latam,265,75.11304347826086
+26/12/2024,Curitiba,S�o Paulo,Latam,70,48.850434782608694
+01/03/2025,Curitiba,S�o Paulo,Latam,65,46.79130434782609
+12/02,Curitiba,Sao luis,Azul,655,130.31130434782608
+07/02/2025,Curitiba,S�o Paulo,Latam,65,46.79130434782609
+24/12/2024,Curitiba,S�o Paulo,Latam,60,48.850434782608694
+01/03/2025,Curitiba,S�o Paulo,Latam,65,46.79130434782609
+09/01,Campinas,Goiania,Azul,85,107.69391304347826
+18/02,Campinas,Vitoria,Gol,85,56.97043478260869
+08/04,Goiania,Vitoria,Latam,240,91.60347826086957
+03/03,Goiania,Sao luis,Latam,355,89.34260869565217
+04/12,Goiania,Sao luis,Latam,500,140.8208695652174
+04/02/2025,Goi�nia,S�o Paulo,Latam,95,50.386086956521744
+13/02/2025,Goi�nia,S�o Paulo,Latam,105,50.386086956521744
+10/04/2025,Goi�nia,S�o Paulo,Latam,100,50.386086956521744
+03/04/2025,Goi�nia,S�o Paulo,Latam,95,50.386086956521744

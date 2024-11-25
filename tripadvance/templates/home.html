@@ -1,112 +1,121 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TripAdvance</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
-    </style>    
-</head>
-<body>
+      body {
+        background-color: #f8f9fa;
+      }
+    </style>
+  </head>
+  <body>
     <nav class="navbar navbar-expand navbar-light bg-light">
-        <a class="navbar-brand" href="#">TripAdvance</a>
-        <div class="navbar-nav">
-            {% if user.is_authenticated %}
-                <a class="nav-link" href="/upload">Upload</a>
-                <a class="nav-link" href="/archives">Archives</a>
-                <a class="nav-link" href="/logout">Logout</a>
-            {% else %}
-                <a class="nav-link" href="/login">Login</a>
-                <a class="nav-link" href="/signup">Register</a>
-            {% endif %}
-        </div>
+      <a class="navbar-brand" href="#">TripAdvance</a>
+      <div class="navbar-nav">
+        {% if user.is_authenticated %}
+        <a class="nav-link" href="/upload">Upload</a>
+        <a class="nav-link" href="/archives">Archives</a>
+        <a class="nav-link" href="/predict">Predict</a>
+        <a class="nav-link" href="/graphs">Graphs</a>
+        <a class="nav-link" href="/logout">Logout</a>
+        {% else %}
+        <a class="nav-link" href="/login">Login</a>
+        <a class="nav-link" href="/signup">Register</a>
+        {% endif %}
+      </div>
     </nav>
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center mt-5">Welcome to TripAdvance</h1>
-                <p class="text-center">The best way to plan your trips.</p>
-            </div>
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center mt-5">Welcome to TripAdvance</h1>
+          <p class="text-center">The best way to plan your trips.</p>
         </div>
+      </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-center mt-3 mb-3">Features</h2>
-            </div>
+      <div class="row">
+        <div class="col-12">
+          <h2 class="text-center mt-3 mb-3">Features</h2>
         </div>
-        <div class="row">
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title
-                        ">Upload</h5>
-                        <p class="card-text">Upload your trip data in a CSV file.</p>
-                    </div>
-                </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Upload</h5>
+              <p class="card-text">Upload your trip data in a CSV file.</p>
             </div>
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title
-                        ">Graphs</h5>
-                        <p class="card-text">Visualize your trip data in graphs.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title
-                        ">Predict</h5>
-                        <p class="card-text">Predict the cost of your next trip.</p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <h2 class="text-center mt-3 mb-3">Graphs Examples</h2>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Graphs</h5>
+              <p class="card-text">Visualize your trip data in graphs.</p>
             </div>
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Scatter</h5>
-                        <img src="{% static 'imgs/scatter.png' %}" class="img-fluid" alt="Pie">
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Pie</h5>
-                        <img src="{% static 'imgs/pie.png' %}" class="img-fluid" alt="Pie">
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Pie</h5>
-                        <img src="{% static 'imgs/histogram.png' %}" class="img-fluid" alt="Pie">
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Predict</h5>
+              <p class="card-text">Predict the cost of your next trip.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h2 class="text-center mt-3 mb-3">Graphs Examples</h2>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Scatter</h5>
+              <img
+                src="{% static 'imgs/scatter.png' %}"
+                class="img-fluid"
+                alt="Pie"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Pie</h5>
+              <img
+                src="{% static 'imgs/pie.png' %}"
+                class="img-fluid"
+                alt="Pie"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Pie</h5>
+              <img
+                src="{% static 'imgs/histogram.png' %}"
+                class="img-fluid"
+                alt="Pie"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <p class="text-center mt-5">
-                    Made with ❤️ by Arthur
-                </p>
-            </div>
+      <div class="row">
+        <div class="col-12">
+          <p class="text-center mt-5">Made with ❤️ by Arthur</p>
         </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
   </head>
   <body>
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+    </style>
     <nav class="navbar navbar-expand navbar-light bg-light">
       <a class="navbar-brand" href="/">TripAdvance</a>
       <div class="navbar-nav">
@@ -18,13 +23,11 @@
         <a class="nav-link" href="/logout">Logout</a>
       </div>
     </nav>
+    <input type="hidden" id="data" value="{{ data }}" />
     {% if error != None %}
     <div class="alert alert-danger mt-3 mx-2" role="alert">{{ error }}</div>
     {% endif %}
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"
-      integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw=="
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -32,33 +35,168 @@
           <p class="text-center">Visualize your trip data in graphs.</p>
         </div>
         <div class="col-4 my-1">
-            <div class="card">
-                <img src="{% static 'imgs/generated_bar.png' %}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Preço Médio por Cidade de Partida</h5>
-                </div>
+          <div class="card">
+            <img
+              src="{% static 'imgs/generated_bar.png' %}"
+              class="card-img-top"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Preço Médio por Cidade de Partida</h5>
             </div>
+          </div>
         </div>
         <div class="col-4 my-1">
-            <div class="card">
-                <img src="{% static 'imgs/generated_pie.png' %}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Distribuição de Cidades de Partida</h5>
-                </div>
+          <div class="card">
+            <img
+              src="{% static 'imgs/generated_pie.png' %}"
+              class="card-img-top"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Distribuição de Cidades de Partida</h5>
             </div>
+          </div>
         </div>
         <div class="col-4 my-1">
-            <div class="card">
-                <img src="{% static 'imgs/generated_trend.png' %}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">Tendência de Preço pela Duração</h5>
-                </div>
+          <div class="card">
+            <img
+              src="{% static 'imgs/generated_trend.png' %}"
+              class="card-img-top"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Tendência de Preço pela Duração</h5>
             </div>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-        </div>
     </div>
+    <div class="row justify-content-center bg-light mt-5 mb-5 px-3">
+      <div class="col-12 col-md-8">
+        <canvas id="price_startcity" style="width: 100%"></canvas>
+      </div>
+    </div>
+    <div class="row justify-content-center bg-light mt-5 mb-5 px-3">
+      <div class="col-12 col-md-8">
+        <canvas id="city_distribution" style="width: 100%"></canvas>
+      </div>
+    </div>
+    <div class="row justify-content-center bg-light mt-5 mb-5 px-3">
+      <div class="col-12 col-md-8">
+        <canvas id="price_duration" style="width: 100%"></canvas>
+      </div>
+    </div>
+    <script>
+      const dataReceived = document.getElementById("data").value;
+      const parsedData = JSON.parse(dataReceived);
+      const cityPriceSum = {};
+      const cityCount = {};
+
+      for (let key in parsedData.start_city) {
+        let city = parsedData.start_city[key];
+        const price = parsedData.price[key];
+        city = city.replace("\ufffdN", "an");
+
+        if (!cityPriceSum[city]) {
+          cityPriceSum[city] = 0;
+          cityCount[city] = 0;
+        }
+
+        cityPriceSum[city] += price;
+        cityCount[city] += 1;
+      }
+
+      const startCityArray = [];
+      const avgPriceArray = [];
+      for (let city in cityPriceSum) {
+        startCityArray.push(city);
+        avgPriceArray.push(cityPriceSum[city] / cityCount[city]);
+      }
+
+      new Chart("price_startcity", {
+        type: "bar",
+        data: {
+          labels: startCityArray,
+          datasets: [
+            {
+              backgroundColor: "green",
+              data: avgPriceArray,
+            },
+          ],
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: "Preço Médio por Cidade de Partida",
+          },
+        },
+      });
+
+      const cityArray = [];
+      const countArray = [];
+      for (let city in cityCount) {
+        cityArray.push(city);
+        countArray.push(cityCount[city]);
+      }
+
+      new Chart("city_distribution", {
+        type: "pie",
+        data: {
+          labels: cityArray,
+          datasets: [
+            {
+              backgroundColor: [
+                "red",
+                "blue",
+                "green",
+                "yellow",
+                "purple",
+                "orange",
+                "pink",
+                "brown",
+                "gray",
+                "black",
+              ],
+              data: countArray,
+            },
+          ],
+        },
+        options: {
+          legend: { display: true },
+          title: {
+            display: true,
+            text: "Distribuição de Cidades de Partida",
+          },
+        },
+      });
+
+      const durationArray = [];
+      const priceArray = [];
+      for (let key in parsedData.duration) {
+        durationArray.push(parsedData.duration[key]);
+        priceArray.push(parsedData.price[key]);
+      }
+
+      new Chart("price_duration", {
+        type: "line",
+        data: {
+          labels: durationArray,
+          datasets: [
+            {
+              label: "Preço",
+              data: priceArray,
+              borderColor: "blue",
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: "Tendência de Preço pela Duração",
+          },
+        },
+      });
+    </script>
   </body>
 </html>

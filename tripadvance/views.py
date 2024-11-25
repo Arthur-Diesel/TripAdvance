@@ -163,14 +163,14 @@ def train(request):
 
 @login_required
 def graphs(request):
-    user = request.user
-    
     if not os.path.exists('./tripadvance/static/trainedmodel/training_data.csv'):
         return render(request, 'graphs.html', {'error': 'Você ainda não treinou um modelo.'})
     
     df = pd.read_csv('./tripadvance/static/trainedmodel/training_data.csv')
     df['start_city'] = df['start_city'].str.strip().str.title()
     df['end_city'] = df['end_city'].str.strip().str.title()
+    df['start_city'] = df['start_city'].str.replace("\ufffdN", "an")
+    df['end_city'] = df['end_city'].str.replace("\ufffdN", "an")
     
     city_counts = df['start_city'].value_counts()
     plt.figure(figsize=(8, 6))
@@ -197,8 +197,7 @@ def graphs(request):
     plt.legend()
     plt.grid(True)
     plt.savefig(f'./tripadvance/static/imgs/generated_trend.png')
-    
-    return render(request, 'graphs.html')
+    return render(request, 'graphs.html', {'data': df.to_json()})
     
 
 @login_required
@@ -217,12 +216,14 @@ def predict(request):
         if model is None:
             return render(request, 'predict.html', {'error': 'Você ainda não treinou um modelo.'})
         model_path = model.path        
+        model = TrainedModel.objects.filter(created_by=request.user).last()
+        model.created_at = model.created_at.strftime('%d/%m/%Y %H:%M:%S')
         with open(model_path, 'rb') as file:
             modelLoaded = pickle.load(file)
             prediction = modelLoaded.predict([[middle]])
             prediction = prediction.tolist() if isinstance(prediction, np.ndarray) else prediction
             prediction = round(prediction[0], 2)
-            return render(request, 'predict.html', {'prediction': prediction})
+            return render(request, 'predict.html', {'prediction': prediction, 'model': model})
 
 @login_required
 def archive(request, id):

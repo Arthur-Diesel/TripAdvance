@@ -125,7 +125,7 @@
             <h2>Predict</h2>
             <p>Predict the price of a trip with your latest trained model.</p>
             <div class="container">
-              <form method="POST">
+              <form method="POST" action="/predict/">
                 {% if prediction != None %}
                 <div class="mb-3 container border border-light p-3">
                   <h4 class="text-success">Prediction</h4>

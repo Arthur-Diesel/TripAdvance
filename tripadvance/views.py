@@ -159,7 +159,7 @@ def train(request):
         rmse=rmse)
     trainedModel.save()
     
-    return render(request, 'predict.html', {'success': 'Modelo treinado com sucesso.'})
+    return render(request, 'predict.html', {'success': 'Modelo treinado com sucesso.', 'model': trainedModel })
 
 @login_required
 def graphs(request):

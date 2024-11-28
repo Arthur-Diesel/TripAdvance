@@ -3,11 +3,12 @@
 ## Descrição do Projeto
 **TripAdvance** é um sistema desenvolvido em Django que realiza treinamento e predições para auxiliar no planejamento de viagens. Ele utiliza um modelo de aprendizado de máquina treinado para prever informações úteis, além de integrar gráficos e funcionalidades de scraping para coletar dados atualizados.
 
----
+<br>
 
 ## Estrutura do Projeto
 A estrutura principal do projeto é a seguinte:
 
+```
 TripAdvance/ 
 ├── archives/ # Contém arquivos auxiliares e backups 
 ├── trainedmodel/ # Modelos treinados para predições 
@@ -16,9 +17,9 @@ TripAdvance/
 ├── FlightSearch.py # Lógica de scraping e busca de voos 
 ├── README.md # Documentação principal do projeto 
 ├── manage.py # Arquivo de gerenciamento do Django
+```
 
-
----
+<br>
 
 ## Funcionalidades
 1. **Treinamento de Modelos**: Permite o treinamento de modelos preditivos usando dados históricos.
@@ -27,7 +28,7 @@ TripAdvance/
 4. **Gráficos Interativos**: Visualiza informações por meio de gráficos implementados no frontend.
 5. **Interface Web**: Desenvolvida com Django, proporcionando uma navegação intuitiva.
 
----
+<br>
 
 ## Requisitos do Sistema
 - Python 3.8 ou superior
@@ -39,7 +40,8 @@ TripAdvance/
   - `scikit-learn`
   - `requests`
 
----
+<br>
+
 
 ## Como Executar o Projeto
 

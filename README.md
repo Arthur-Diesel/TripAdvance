@@ -38,7 +38,6 @@ TripAdvance/
   - `pandas`
   - `matplotlib`
   - `scikit-learn`
-  - `requests`
 
 <br>
 

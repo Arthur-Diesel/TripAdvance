@@ -45,7 +45,7 @@ TripAdvance/
 ## Detalhamento do treinamento
 
 ### Funções Principais de treino e predição
-#### 1 Preprocessamento dos Dados (preprocess_data)
+#### 1. Preprocessamento dos Dados (preprocess_data)
 A função de preprocessamento é responsável por preparar os dados para análise e treinamento do modelo. Ela recebe como entrada o caminho para o arquivo CSV e retorna um DataFrame processado, executando as seguintes etapas:
 - Carregamento dos dados do arquivo CSV
 - Remoção de registros com valores nulos

@@ -59,7 +59,6 @@ pip install -r requirements.txt
 
 ### 3. Configurar o banco de dados
 ```bash
-python manage.py makemigrations
 python manage.py migrate
 ```
 

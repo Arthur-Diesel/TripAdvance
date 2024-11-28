@@ -159,7 +159,7 @@ def train(request):
         rmse=rmse)
     trainedModel.save()
     
-    return render(request, 'predict.html', {'success': 'Modelo treinado com sucesso.'})
+    return render(request, 'predict.html', {'success': 'Modelo treinado com sucesso.', 'model': trainedModel })
 
 @login_required
 def graphs(request):
@@ -204,7 +204,8 @@ def graphs(request):
 def predict(request):
     if request.method == 'GET':
         model = TrainedModel.objects.filter(created_by=request.user).last()
-        model.created_at = model.created_at.strftime('%d/%m/%Y %H:%M:%S')
+        if model is not None:
+            model.created_at = model.created_at.strftime('%d/%m/%Y %H:%M:%S')
         return render(request, 'predict.html', {'model': model})
     if request.method == 'POST':
         start_interval = request.POST.get('start_interval')

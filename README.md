@@ -71,7 +71,7 @@ python manage.py runserver
 
 <h2 align="left" >Equipe 🧠</h2>
 
-- Arthur Diesel (26681706)
+- Arthur Diesel Ogg (26681706)
 - Gabriela Cristina Schmitt (25733150)
 - Vinicius Dionizio Patrocinio (27038386)
 

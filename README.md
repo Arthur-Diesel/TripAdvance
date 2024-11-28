@@ -1,4 +1,5 @@
-# TripAdvance
+<h1 align="center">
+  <br>Trip Advance</h1>
 
 ## Descrição do Projeto
 **TripAdvance** é um sistema desenvolvido em Django que realiza treinamento e predições para auxiliar no planejamento de viagens. Ele utiliza um modelo de aprendizado de máquina treinado para prever informações úteis, além de integrar gráficos e funcionalidades de scraping para coletar dados atualizados.

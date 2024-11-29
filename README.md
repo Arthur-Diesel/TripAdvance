@@ -99,6 +99,9 @@ Os elementos interativos incluem:
   - `pandas`
   - `matplotlib`
   - `scikit-learn`
+  - `charts-js`
+  - `bootstrap`
+  - `jquery`
 
 <br>
 

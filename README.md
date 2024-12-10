@@ -30,7 +30,7 @@ TripAdvance/
 
 <br>
 
-# Fluxo de Execução
+## Fluxo de Execução
 
 1. Login / registrar-se
 2. O usuário faz upload de um arquivo CSV.
